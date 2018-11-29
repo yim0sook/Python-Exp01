@@ -1,0 +1,25 @@
+import sqlite3
+
+#db = sqlite3.connect("contacts.sqlite")
+#cursor = db.cursor()
+#cursor.execute("SELECT * FROM contacts")
+#for name, phone, email in cursor:
+#    print(name)
+#    print(phone)
+#    print(email)
+#cursor.close()
+#db.close()
+
+conn = sqlite3.connect("contacts.sqlite")
+name = input("Please enter your name")
+
+#sel_sql = "SELECT * FROM contacts where name = ?"
+#for row in conn.execute(sel_sql,(name,)):
+
+# the reaon put , when single place holder is passed as tuple, tuple is passed as arguments
+for row in conn.execute("SELECT * FROM contacts where name = ?",(name,)):
+#for row in conn.execute("SELECT * FROM sqlite_master"):
+
+    print(row)
+
+conn.close()
